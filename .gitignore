@@ -1,0 +1,11 @@
+.DS_Store
+build/
+node_modules/
+.esbuild
+.node-version
+
+.env
+.env.local
+.env.dev
+
+.serverless

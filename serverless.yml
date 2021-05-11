@@ -1,0 +1,40 @@
+service: roadtrip
+
+useDotenv: true
+
+plugins:
+  - serverless-domain-manager
+  - serverless-esbuild
+  - serverless-offline
+
+custom:
+  customDomains:
+    - rest:
+        certificateName: "*.apsis.io"
+        domainName: roadtrip.apsis.io
+        stage: production
+        autoDomain: true
+  serverless-offline:
+    httpPort: 9923
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: ${opt:stage, 'staging'}
+  region: us-west-2
+  lambdaHashingVersion: "20201221"
+  apiGateway:
+    shouldStartNameWithService: true
+
+functions:
+  app:
+    handler: app.handler
+    events:
+      - http:
+          path: /
+          method: ANY
+          cors: true
+      - http:
+          path: /{proxy+}
+          method: ANY
+          cors: true
