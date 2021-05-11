@@ -11,7 +11,6 @@ const respondWithState = (exclude = null) => {
 
 const respondWithError = () => {
   const error = _.sample(ERRORS);
-  console.log(error);
   return serializeErrorResponse(error, error.code);
 };
 
