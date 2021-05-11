@@ -24,8 +24,8 @@ export const showState = async (req, res) => {
   const forceSuccess = req.query.success === "1";
   const isForced = forceError || forceTimeout || forceSuccess;
 
-  const shouldError = dice <= 0.2;
-  const shouldTimeout = dice > 0.2 && dice <= 0.4;
+  const shouldTimeout = dice <= 0.05;
+  const shouldError = dice > 0.05 && dice <= 0.25;
 
   if ((isForced && forceError) || (!isForced && shouldError)) {
     return res.json(respondWithError());

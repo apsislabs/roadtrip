@@ -5,7 +5,8 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "dev": "serverless offline start --noPrependStageInUrl"
+    "dev": "serverless offline start --noPrependStageInUrl",
+    "deploy": "serverless deploy --aws-profile=apsis --stage=production"
   },
   "author": "Apsis Labs",
   "license": "UNLICENSED",
